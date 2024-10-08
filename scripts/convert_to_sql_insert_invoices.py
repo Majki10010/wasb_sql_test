@@ -12,8 +12,6 @@ file_path = '../insert_invoices.sql'
 data = []
 
 
-
-
 def csv_to_sql_inserts(csv_file_path, table_name):
     try:
         with open(csv_file_path, 'r') as csv_file:
@@ -23,10 +21,10 @@ def csv_to_sql_inserts(csv_file_path, table_name):
             for row in reader:
                 id += 1
                 columns = ', '.join(column_names)
-                company_name = row[4].replace("'","''")
-                invoice_amount = float(row[2])
-                due_date = dateparser.parse(row[3]).strftime('%Y-%m-%d')
-                insert_sql = (f'INSERT INTO {table_name} ({columns.replace(", name","")}) '
+                company_name = row[4].replace("'", "''")       # yuck!
+                invoice_amount = float(row[2])                              # bleh
+                due_date = dateparser.parse(row[3]).strftime('%Y-%m-%d')    # ugh
+                insert_sql = (f'INSERT INTO {table_name} ({columns.replace(", name", "")}) '
                               f'select supplier.id, '
                               f'{id},'
                               f'{invoice_amount}, '
