@@ -4,9 +4,11 @@ import sys
 
 
 def execute_script(script_name):
-    # Construct the full path to the script
+    """
+    :param script_name: The name of the script to execute (without file extension)
+    :return: None
+    """
     script_path = os.path.join('scripts/', f"{script_name}.py")
-    # Check if the script exists in the designated folder
     if not os.path.isfile(script_path):
         print(f"Error: {script_name}.py not foun")
         return
@@ -24,3 +26,6 @@ def execute_script(script_name):
 if __name__ == "__main__":
     execute_script('convert_expenses')
     execute_script('convert_to_sql_insert')
+    execute_script('convert_invoices')
+    execute_script('convert_to_sql_insert_suppliers')
+    execute_script('convert_to_sql_insert_invoices')
