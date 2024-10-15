@@ -1,3 +1,7 @@
+"""
+Module for converting data from expenses text files to csv format file for easier handling.
+It merges data from txt files in a given input folder into a single csv file.
+"""
 import csv
 import os
 
@@ -8,7 +12,12 @@ output_file = "finance/receipts_from_last_night/mergedCSV.csv"
 # List to store parsed data
 data = []
 
-def parse_txt_file(file_path):
+def parse_expenses_txt_files(file_path):
+    """
+    Parses expenses files for a given filepath and writes to output csv files
+
+    :type file_path: str
+    """
     record = {}
     try:
         with open(file_path, 'r') as f:
@@ -41,7 +50,7 @@ def parse_txt_file(file_path):
 for filename in os.listdir(input_folder):
     if filename.endswith(".txt"):
         file_path = os.path.join(input_folder, filename)
-        record = parse_txt_file(file_path)
+        record = parse_expenses_txt_files(file_path)
         if record is not None:
             data.append(record)
 # Write parsed data to CSV

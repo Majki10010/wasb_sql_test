@@ -1,3 +1,11 @@
+"""
+Main module to execute,
+This module provides functionality for processing invoices and suppliers.
+
+
+Author: Marek Cybulski
+Date: October 7, 2024
+"""
 import os
 import subprocess
 import sys
@@ -24,6 +32,7 @@ def execute_script(script_name):
 
 
 if __name__ == "__main__":
+
     execute_script('convert_expenses')
     execute_script('convert_to_sql_insert')
     execute_script('convert_invoices')

@@ -1,4 +1,11 @@
+> *Marek Cybulski wrote:*
+> #### Here's a short description on how to prepare sql scripts to load. This is a prerequisite to solve the task described later below.
+> 
+> 1. go to ./scripts folder
+> 2. run runme.py script from terminal. this script will create sql scripts to run on Trino to solve the tasks. 
+> 3. run the newly created and original sql scripts. you need to run them in the same sequence  as in the tasks described below in the original readme. 
 
+---
 I... I don't feel so good.
 
 I barely remember anything. Did Ian dance on the table with a carrot in his mouth? Was Alex singing karaoke with Santa 

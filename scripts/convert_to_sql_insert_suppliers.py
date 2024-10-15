@@ -1,3 +1,7 @@
+"""
+Module for converting data from suppliers csv file to sql formatted statements.
+Creates SQL files for later execution on Trino
+"""
 import csv
 import sys
 
@@ -10,9 +14,10 @@ file_path = '../insert_suppliers.sql'
 data = []
 
 
-def csv_to_sql_inserts(csv_file_path, table_name):
+def csv_suppliers_to_sql_inserts(csv_file_path, table_name):
     """
-
+    converts parsed data from csv files into sql statement and writes data into output sql srcipt files
+    Parsed data: Suppliers
     """
     try:
         with (open(csv_file_path, 'r') as csv_file):
@@ -45,5 +50,5 @@ def csv_to_sql_inserts(csv_file_path, table_name):
         print("Error while converting csv to sql inserts: ", e, file=sys.stderr)
 
 
-csv_to_sql_inserts(FILE__CSV, TABLE_NAME)
+csv_suppliers_to_sql_inserts(FILE__CSV, TABLE_NAME)
 print(f'Data successfully written to SQL definitions')

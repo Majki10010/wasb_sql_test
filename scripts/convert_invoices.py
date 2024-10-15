@@ -1,3 +1,8 @@
+#  Copyright (c) 2024.
+"""
+Module for converting data from invoicses text files to csv format file for easier handling.
+It merges data from txt files in a given input folder into a single csv file.
+"""
 import csv
 import os
 from datetime import datetime
@@ -10,7 +15,12 @@ output_file2 = "../finance/invoices_due/mergedCSVcompanies.csv"
 data = []
 
 
-def parse_txt_file(file_path):
+def parse_invoices_txt_files(file_path):
+    """
+    Parses invoices files for a given filepath
+
+    :type file_path: str
+    """
     record = {}
 
     try:
@@ -42,14 +52,15 @@ def parse_txt_file(file_path):
         return None
 
 
-# id_ = 0
+# files in input folder loop
 for filename in os.listdir(input_folder):
     if filename.endswith(".txt"):
         file_path = os.path.join(input_folder, filename)
-        record = parse_txt_file(file_path)
+        record = parse_invoices_txt_files(file_path)
         if record is not None and record not in data:
             data.append(record)
-# rite data
+# write data to output files. first files with invoices and in second step files with company names
+# step 1:
 with open(output_file, mode='w', newline='') as csv_file:
     fieldnames = ['supplier_id', 'id', 'invoice_amount', 'due_date', 'name']
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
@@ -57,7 +68,7 @@ with open(output_file, mode='w', newline='') as csv_file:
     writer.writeheader()
     for row in data:
         writer.writerow(row)
-
+# step 2:
 with open(output_file2, mode='w', newline='') as csv_file:
     fieldnames = ['id', 'name']
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)

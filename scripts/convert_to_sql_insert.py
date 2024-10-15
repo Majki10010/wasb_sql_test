@@ -1,3 +1,6 @@
+"""
+Module for converting data from employees csv file to sql formatted statements
+"""
 import csv
 import sys
 
@@ -12,7 +15,11 @@ data = []
 
 
 
-def csv_to_sql_inserts(csv_file_path, table_name):
+def csv_employees_to_sql_inserts(csv_file_path, table_name):
+    """
+    converts parsed data from csv files into sql statements and writes data into output sql srcipt files
+    Parsed data: Employees
+    """
     try:
         with open(csv_file_path, 'r') as csv_file:
             reader = csv.reader(csv_file)
@@ -38,5 +45,5 @@ def csv_to_sql_inserts(csv_file_path, table_name):
         print("Error while converting csv to sql inserts: ", e, file=sys.stderr)
 
 
-csv_to_sql_inserts(FILE__CSV, TABLE_NAME)
+csv_employees_to_sql_inserts(FILE__CSV, TABLE_NAME)
 print(f'Data successfully written to SQL definitions')
